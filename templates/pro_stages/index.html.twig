@@ -1,5 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{# {% block contenu %}
-<h3>Bienvenue sur la page d'accueil de Prostages</h3>
-{% endblock %} #}
+{% block contenu %}
+
+
+            <!-- Tableau contenant les différents stages/entreprises/formations-->
+            <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Intitulé</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Formation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Développeur PHP H/F</td>
+      <td>Safran</td>
+      <td>DUT Info</td>
+    </tr>
+    <tr>
+      <td>Développeur mobile Android</td>
+      <td>Homecare</td>
+      <td>DUT Info</td>
+    </tr>
+    <tr>
+      <td>Développeur Java H/F</td>
+      <td>Benjouy's Company</td>
+      <td>DUT Info</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}
