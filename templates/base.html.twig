@@ -2,8 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}ProStages{% endblock %}</title>
+        <title>
+        {% block title %}
+
+        ProStages
+
+        {% endblock %}
+        </title>
+
+
+
         {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('/css/fontello.css')}}">
         <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
         {% endblock %}
     </head>
@@ -11,13 +21,16 @@
 
       <!-- container -->
       <div class="container-fluid">
-      	<div class="row">
+      	 <div class="row">
       		<div class="col-md-12">
-            {% block intitule %}
-            <h1>ProStages</h1></br></br>
-            {% endblock %}
+              {% block intitule %}
+                <div class="p-3 mb-2 bg-dark text-white">
+                  <center><h1 class = "icon-leaf"> ProStages</h1></center>
+                </div>
+                </br></br>
+              {% endblock %}
       		</div>
-      	</div>
+        </div>
       	<div class="row">
       		<div class="col-md-9">
             {% block contenu %}
@@ -33,7 +46,7 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
+      <td>Benjouy</td>
       <td>Otto</td>
     </tr>
     <tr>
@@ -54,8 +67,8 @@
             {% block tri %}
             <h4><center>Trier par :</center></h4></br>
             <ul class="list-group">
-  <li class="list-group-item">Entreprises</li>
-  <li class="list-group-item">Formations</li>
+  <li class="list-group-item"><a href="http://localhost:8000/entreprises">Entreprises</a></li>
+  <li class="list-group-item"><a href="http://localhost:8000/formations">Formations</a></li>
 </ul>
             {% endblock %}
       		</div>
@@ -63,7 +76,8 @@
       	<div class="row">
       		<div class="col-md-12">
             {% block footer %}
-            <h4>------- Pied de page --------</h4>
+            <h6 align = "right">Kévin Oliva Fondation, by <a href="https://symfony.com/">Symfony</a>
+            and <a href="https://getbootstrap.com/">Bootstrap</a></h6>
             {% endblock %}
       		</div>
       	</div>
