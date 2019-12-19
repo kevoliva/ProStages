@@ -8,14 +8,24 @@
 <strong>Formation concernée</strong> :
 
 {% for formationCourante in stage.formation %}
-{{formationCourante.nom}}
+{{formationCourante.nomCourt}} ({{formationCourante.nom}})
 {% endfor %}
 </br></br>
 
 <strong>Entreprise</strong> : {{stage.entreprise.nom}}
 </br></br>
 
-<strong>Description</strong> : {{stage.description}}
+<strong>Activité de l'entreprise</strong> : {{stage.entreprise.activite}}
+</br></br>
+
+<strong>Adresse</strong> : {{stage.entreprise.adresse}}
+</br></br>
+
+<strong>Description</strong> : <p align = "justify">{{stage.description}}</p>
+
+<strong>Mail</strong> : <a href = "mailto:{{stage.entreprise.email}}">{{stage.entreprise.email}}</a>
+</br></br>
+<strong>Site Web</strong> : {{stage.entreprise.siteWeb}}
 
 
 

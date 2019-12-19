@@ -1,6 +1,28 @@
 {% extends 'base.html.twig' %}
 {% block contenu %}
 
-<h1>Cette page affichera la liste des entreprises proposant un stage</h1>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Site Web</th>
+      <th scope="col">Mail</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for entrepriseCourante in entreprises %}
+
+    <tr>
+
+      <td>{{ entrepriseCourante.nom }}</td>
+      <td>{{ entrepriseCourante.siteWeb }}</td>
+      <td>{{ entrepriseCourante.email }}</td>
+
+    </tr>
+
+{% endfor %}
+  </tbody>
+</table>
 
 {% endblock %}
