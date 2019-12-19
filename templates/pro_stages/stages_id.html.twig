@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+Stage n°{{stage.id}}
+{% endblock %}
 
 {% block contenu %}
 
-<h1><center>{{ stage.titre }}</center></h1>
+<h1><strong><center>{{ stage.titre }}</center></strong></h1>
+<center>Stage n° {{stage.id}}</center>
 </br></br>
 
 <strong>Formation concernée</strong> :
