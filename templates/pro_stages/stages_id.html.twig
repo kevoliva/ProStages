@@ -1,5 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-<h1>Cette page affichera le descriptif du stage ayant pour identifiant {{stage.id}}</h1>
+
+<h1><center>{{ stage.titre }}</center></h1>
+</br></br>
+
+<strong>Formation concernée</strong> :
+
+{% for formationCourante in stage.formation %}
+{{formationCourante.nom}}
+{% endfor %}
+</br></br>
+
+<strong>Entreprise</strong> : {{stage.entreprise.nom}}
+</br></br>
+
+<strong>Description</strong> : {{stage.description}}
+
+
+
 {% endblock %}

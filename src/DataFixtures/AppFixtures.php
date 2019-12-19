@@ -64,8 +64,8 @@ class AppFixtures extends Fixture
 
       for ($numStage = 0; $numStage < $nbStagesAGenerer; $numStage++) {
         $stage = new Stage();
-        $stage -> setTitre($faker->realText($maxNbChars = 35, $indexSize = 2));
-        $stage -> setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
+        $stage -> setTitre("Stage - ".$faker->jobTitle);
+        $stage -> setDescription($faker->realText($maxNbChars = 1000, $indexSize = 2));
 
         // Création relation Stage --> Formation
         $stage -> addFormation($formation);
