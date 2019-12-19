@@ -1,95 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <link rel="shortcut icon" type="image/x-icon" href="{{asset('/ico/leaf.ico')}}" />
-        <meta charset="UTF-8">
-        <title>
-        {% block title %}
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('/ico/leaf.ico')}}" />
+  <meta charset="UTF-8">
+  <title>
+    {% block title %}
 
-        ProStages
+    ProStages
 
-        {% endblock %}
-        </title>
+    {% endblock %}
+  </title>
 
 
 
-        {% block stylesheets %}
-        <link rel="stylesheet" href="{{asset('/css/fontello.css')}}">
-        <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
-        {% endblock %}
-    </head>
-    <body>
+  {% block stylesheets %}
+  <link rel="stylesheet" href="{{asset('/css/fontello.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
+{% endblock %}
+</head>
+<body>
 
-      <!-- container -->
-      <div class="container-full">
-      	 <div class="row">
-      		<div class="col-md-12">
+  <!-- container -->
+  <div class="container-full">
+    <div class="row">
+      <div class="col-md-12">
 
-              {% block intitule %}
-                <div class="p-3 mb-2 bg-dark text-white">
-                    <a href = "{{path('accueil_pro_stages')}}" style="color:white; text-decoration:none;">
-                      <center><h1 class = "icon-leaf">
-                   ProStages
-                  </a>
-                </h1></center>
-                </div>
-                </br></br>
-              {% endblock %}
-      		</div>
+        {% block intitule %}
+        <div class="p-3 mb-2 bg-dark text-white">
+          <a href = "{{path('accueil_pro_stages')}}" style="color:white; text-decoration:none;">
+            <center><h1 class = "icon-leaf">
+              ProStages
+            </a>
+          </h1></center>
         </div>
-      	<div class="row">
-      		<div class="col-md-9">
-            <div class="container-fluid">
+      </br></br>
+      {% endblock %}
+    </div>
+  </div>
+</div>
 
-            {% block contenu %}
+<div class="row">
+  <div class="col-md-9">
+    <div class="container-fluid">
 
-            {% endblock %}
+      {% block contenu %}
 
-          </div>
+      {% endblock %}
 
-      		</div>
+    </div>
 
-      		<div class="col-md-3">
-            <div class="container-fluid">
+  </div>
 
-            {% block tri %}
+  <div class="col-md-3">
+    <div class="container-fluid">
 
-            <h4><center>Trier par :</center></h4></br>
-            <ul class="list-group">
-  <li class="list-group-item"><a href="{{path('entreprises_prostages')}}">Entreprises</a></li>
-  <li class="list-group-item"><a href="{{path('formations_prostages')}}">Formations</a></li>
-</ul>
-</br>
-            {% endblock %}
+      {% block tri %}
 
-          </div>
-      		</div>
-      	</div>
+      <h4><center>Trier par :</center></h4></br>
+      <ul class="list-group">
+        <li class="list-group-item"><a href="{{path('entreprises_prostages')}}">Entreprises</a></li>
+        <li class="list-group-item"><a href="{{path('formations_prostages')}}">Formations</a></li>
+      </ul>
+    </br>
+    {% endblock %}
 
-      	<div class="row">
-      		<div class="col-md-12">
-            <div class="container-fluid">
+  </div>
+</div>
+</div>
 
-            {% block footer %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="container-fluid">
 
-            <h6 align = "right">Kévin Oliva Fondation, by <a href="https://symfony.com/">Symfony</a>
-            and <a href="https://getbootstrap.com/">Bootstrap</a></h6>
+      {% block footer %}
 
-            {% endblock %}
-
-          </div>
-      		</div>
-      	</div>
-
-
-        {% block javascripts %}
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="{{asset('/js/bootstrap.min.js')}}"></script>
+      <h6 align = "right">Kévin Oliva Foundation, by <a href="https://symfony.com/">Symfony</a>
+        and <a href="https://getbootstrap.com/">Bootstrap</a></h6>
 
         {% endblock %}
 
-        </div>
-    </body>
+      </div>
+    </div>
+  </div>
+
+
+  {% block javascripts %}
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="{{asset('/js/bootstrap.min.js')}}"></script>
+
+{% endblock %}
+
+
+</body>
 </html>
