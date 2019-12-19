@@ -13,21 +13,16 @@
     </tr>
   </thead>
   <tbody>
+    {% for stageCourant in stages %}
     <tr>
-      <td>Développeur PHP H/F</td>
-      <td>Safran</td>
-      <td>DUT Info</td>
+      <td><a href = "{{path('stages_id_prostages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
+      {{stageCourant.titre}}</a></td>
+
+      <td>{{stageCourant.entreprise.getNom}}</td>
+
+      {#<td>{{stageCourant.formation.getNomCourt}}</td>#}
     </tr>
-    <tr>
-      <td>Développeur mobile Android</td>
-      <td>Homecare</td>
-      <td>DUT Info</td>
-    </tr>
-    <tr>
-      <td>Développeur Java H/F</td>
-      <td>Benjouy's Company</td>
-      <td>DUT Info</td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
 
