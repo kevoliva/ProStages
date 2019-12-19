@@ -15,15 +15,22 @@
   <tbody>
     {% for stageCourant in stages %}
     <tr>
+
       <td><a href = "{{path('stages_id_prostages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
-      {{stageCourant.titre}}</a></td>
+        {{stageCourant.titre}}</a></td>
 
-      <td>{{stageCourant.entreprise.getNom}}</td>
+        <td>{{stageCourant.entreprise.getNom}}</td>
 
-      {#<td>{{stageCourant.formation.getNomCourt}}</td>#}
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+        <td>
+          {% for formationCourante in stageCourant.formation %}
+          {{formationCourante.nomCourt}}
+
+          {% endfor %}
+        </td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
 {% endblock %}
