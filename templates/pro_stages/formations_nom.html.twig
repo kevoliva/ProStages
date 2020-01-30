@@ -1,4 +1,7 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+Formation
+{% endblock %}
 
 {% block contenu %}
 
@@ -13,18 +16,16 @@
     </tr>
   </thead>
   <tbody>
-    {% for stageCourant in stages %}
+    {% for stageCourant in stagesParNomFormation %}
     <tr>
 
       <td><a href = "{{path('stages_id_prostages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
         {{stageCourant.titre}}</a></td>
 
-        <td><a href = "{{path('stages_par_entreprise_prostages', {nom:stageCourant.entreprise.getNom})}}" style="color:white; text-decoration:none;">
-        {{stageCourant.entreprise.getNom}}</a></td>
+        <td>{{stageCourant.entreprise.getNom}}</td>
 
         <td>
           {% for formationCourante in stageCourant.formation %}
-          
           {{formationCourante.nomCourt}}
 
           {% endfor %}
@@ -34,5 +35,6 @@
       {% endfor %}
     </tbody>
   </table>
+
 
 {% endblock %}

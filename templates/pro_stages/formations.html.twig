@@ -18,11 +18,11 @@ Formations
 
     <tr>
 
-      <td><a href = "{{ path('accueil_pro_stages')}}" style="color:white; text-decoration:none;">
+      <td><a href = "{{path('stages_par_formation_prostages', {nom:formationCourante.nom})}}" style="color:white; text-decoration:none;">
         {{ formationCourante.nomCourt }}
       </a></td>
 
-      <td><a href = "{{ path('accueil_pro_stages')}}" style="color:white; text-decoration:none;">
+      <td><a href = "{{path('stages_par_formation_prostages', {nom:formationCourante.nom})}}" style="color:white; text-decoration:none;">
         {{ formationCourante.nom }}
       </a></td>
 
