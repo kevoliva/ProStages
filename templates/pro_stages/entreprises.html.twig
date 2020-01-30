@@ -19,7 +19,7 @@ Entreprises
 
   <tr>
 
-    <td><a href = "{{ path('accueil_pro_stages')}}" style="color:white; text-decoration:none;">
+    <td><a href = "{{path('stages_par_entreprise_prostages', {nom:entrepriseCourante.nom})}}" style="color:white; text-decoration:none;">
       {{ entrepriseCourante.nom }}
     </a></td>
 
