@@ -18,7 +18,7 @@ class ProStagesController extends AbstractController
     // Récupérer le repository de l'entité Stage
     $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
     // Récupérer les stages enregistrés en BD
-    $stages = $repositoryStage->findAll();
+    $stages = $repositoryStage->getStageEntrepriseEtFormation();
     // Envoyer les stages récupérés à la vue chargée de les afficher
     return $this->render('pro_stages/index.html.twig', ['stages'=>$stages]);
   }
