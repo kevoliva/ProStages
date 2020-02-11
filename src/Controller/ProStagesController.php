@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ProStagesController extends AbstractController
 {
@@ -40,7 +42,7 @@ class ProStagesController extends AbstractController
   /**
   * @Route("/entreprises/new", name="ajouter_entreprises_prostages")
   */
-  public function AjouterEntreprise()
+  public function AjouterEntreprise(Request $requeteHttp, ObjectManager $manager)
   {
     // Création d'une entreprise initialement vierge
     $entreprise = new Entreprise();
@@ -54,6 +56,18 @@ class ProStagesController extends AbstractController
     -> add('siteWeb')
     -> getForm();
 
+    // Récupération des données dans $entreprise si elles ont été soumises
+    $formulaireEntreprise -> handleRequest($requeteHttp);
+
+    // Traiter les données du formulaire s'il a été soumis
+    if ($formulaireEntreprise->isSubmitted()){
+      // Enregistrer les caractéristiques de l'entreprise en BD
+      $manager->persist($entreprise);
+      $manager->flush();
+
+      // Rediriger l'utilisateur vers la page affichant la liste des entreprises
+      return $this->redirectToRoute('entreprises_prostages');
+    }
     // Générer la vue représentant le formulaire
     $vueFormulaireEntreprise = $formulaireEntreprise -> createView();
 

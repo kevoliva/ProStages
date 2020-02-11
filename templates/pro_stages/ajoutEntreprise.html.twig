@@ -2,7 +2,44 @@
 
 {% block contenu %}
 
-{{ form(vueFormulaireEntreprise)}}
+<center>
+  <h2 class = "display-4">Ajout d'une entreprise</h2>
+  <br>
+</center>
+
+{{form_start(vueFormulaireEntreprise)}}
+
+<label>Nom de l'entreprise</label>
+{{form_errors(vueFormulaireEntreprise.nom)}}
+{{form_widget(vueFormulaireEntreprise.nom, {'attr':{'placeholder':"Total, Safran, Lauak..."}})}}
+<br>
+
+<label>Activité de l'entreprise</label>
+{{form_errors(vueFormulaireEntreprise.activite)}}
+{{form_widget(vueFormulaireEntreprise.activite, {'attr':{'placeholder':"Conception Web..."}})}}
+<br>
+
+<label>Adresse de l'entreprise</label>
+{{form_errors(vueFormulaireEntreprise.adresse)}}
+{{form_widget(vueFormulaireEntreprise.adresse, {'attr':{'placeholder':"33 Rue de la Paix 64600 Anglet..."}})}}
+<br>
+
+<label>Email de l'entreprise</label>
+{{form_errors(vueFormulaireEntreprise.email)}}
+{{form_widget(vueFormulaireEntreprise.email, {'attr':{'placeholder':"contact@safran.com..."}})}}
+<br>
+
+<label>Site Web de l'entreprise</label>
+{{form_errors(vueFormulaireEntreprise.siteWeb)}}
+{{form_widget(vueFormulaireEntreprise.siteWeb, {'attr':{'placeholder':"safran.com..."}})}}
+
+{{form_end(vueFormulaireEntreprise)}}
+
+<br>
+
+<center>
+  <button type="submit" class="btn btn-dark">Valider !</button>
+</center>
 
 {% endblock %}
 

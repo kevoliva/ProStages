@@ -15,21 +15,27 @@ Entreprises
   </thead>
   <tbody>
 
-  {% for entrepriseCourante in entreprises %}
+    {% for entrepriseCourante in entreprises %}
 
-  <tr>
+    <tr>
 
-    <td><a href = "{{path('stages_par_entreprise_prostages', {nom:entrepriseCourante.nom})}}" style="color:white; text-decoration:none;">
-      {{ entrepriseCourante.nom }}
-    </a></td>
+      <td><a href = "{{path('stages_par_entreprise_prostages', {nom:entrepriseCourante.nom})}}" style="color:white; text-decoration:none;">
+        {{ entrepriseCourante.nom }}
+      </a></td>
 
-    <td>{{ entrepriseCourante.siteWeb }}</td>
-    <td>{{ entrepriseCourante.email }}</td>
+      <td>{{ entrepriseCourante.siteWeb }}</td>
+      <td>{{ entrepriseCourante.email }}</td>
 
-  </tr>
+    </tr>
 
-{% endfor %}
-</tbody>
+    {% endfor %}
+  </tbody>
 </table>
+
+<center>
+  <a href="{{ path('ajouter_entreprises_prostages') }}">
+    <button class = "btn btn-dark btn-outline">Ajouter une entreprise</button>
+  </a>
+</center>
 
 {% endblock %}
