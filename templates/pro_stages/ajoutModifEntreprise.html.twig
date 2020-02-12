@@ -15,7 +15,7 @@
 </center>
 {% endif %}
 
-{{form_start(vueFormulaireEntreprise)}}
+{{form_start(vueFormulaireEntreprise, {'attr':{'novalidate':'novalidate'}}) }}
 
 <label>Nom de l'entreprise</label>
 {{form_errors(vueFormulaireEntreprise.nom)}}
@@ -47,8 +47,6 @@
 </center>
 
 {{form_end(vueFormulaireEntreprise)}}
-
-
 
 {% endblock %}
 

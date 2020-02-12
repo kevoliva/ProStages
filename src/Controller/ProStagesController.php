@@ -61,7 +61,7 @@ class ProStagesController extends AbstractController
     $formulaireEntreprise -> handleRequest($requeteHttp);
 
     // Traiter les données du formulaire s'il a été soumis
-    if ($formulaireEntreprise->isSubmitted()){
+    if ($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid()){
       // Enregistrer les caractéristiques de l'entreprise en BD
       $manager->persist($entreprise);
       $manager->flush();
@@ -76,7 +76,6 @@ class ProStagesController extends AbstractController
     return $this -> render('pro_stages/ajoutModifEntreprise.html.twig',
     ['vueFormulaireEntreprise' => $vueFormulaireEntreprise, 'action' => "ajouter"]);
   }
-
 
   /**
   * @Route("/entreprises/edit/{id}", name="modifier_entreprise_prostages")
@@ -97,7 +96,7 @@ class ProStagesController extends AbstractController
     $formulaireEntreprise -> handleRequest($requeteHttp);
 
     // Traiter les données du formulaire s'il a été soumis
-    if ($formulaireEntreprise->isSubmitted()){
+    if ($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid()){
       // Enregistrer les caractéristiques de l'entreprise en BD
       $manager->persist($entreprise);
       $manager->flush();
