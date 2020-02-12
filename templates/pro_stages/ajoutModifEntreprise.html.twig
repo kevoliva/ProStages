@@ -2,10 +2,18 @@
 
 {% block contenu %}
 
+{% if action == "ajouter" %}
 <center>
   <h2 class = "display-4">Ajout d'une entreprise</h2>
   <br>
 </center>
+
+{% else %}
+<center>
+  <h2 class = "display-4">Modification d'une entreprise</h2>
+  <br>
+</center>
+{% endif %}
 
 {{form_start(vueFormulaireEntreprise)}}
 
@@ -33,13 +41,14 @@
 {{form_errors(vueFormulaireEntreprise.siteWeb)}}
 {{form_widget(vueFormulaireEntreprise.siteWeb, {'attr':{'placeholder':"safran.com..."}})}}
 
-{{form_end(vueFormulaireEntreprise)}}
-
 <br>
-
 <center>
   <button type="submit" class="btn btn-dark">Valider !</button>
 </center>
+
+{{form_end(vueFormulaireEntreprise)}}
+
+
 
 {% endblock %}
 

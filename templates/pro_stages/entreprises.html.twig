@@ -25,6 +25,13 @@ Entreprises
 
       <td>{{ entrepriseCourante.siteWeb }}</td>
       <td>{{ entrepriseCourante.email }}</td>
+      <td>
+        <center>
+          <a href="{{path('modifier_entreprise_prostages', {id:entrepriseCourante.id})}}" style="color:white; text-decoration:none;">
+            <i class = "icon-pencil"></i>
+          </a>
+        </center>
+      </td>
 
     </tr>
 
