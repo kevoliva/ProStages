@@ -24,7 +24,7 @@
 
         <td>
           {% for formationCourante in stageCourant.formation %}
-          
+
           {{formationCourante.nomCourt}}
 
           {% endfor %}
@@ -34,5 +34,11 @@
       {% endfor %}
     </tbody>
   </table>
+
+  <center>
+    <a href="{{ path('ajouter_stage_prostages') }}">
+      <button class = "btn btn-dark btn-outline">Ajouter un stage</button>
+    </a>
+  </center>
 
 {% endblock %}

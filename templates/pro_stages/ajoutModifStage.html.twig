@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+
+{% if action == "ajouter" %}
+<center>
+  <h2 class = "display-4">Ajout d'un stage</h2>
+  <br>
+</center>
+
+{% else %}
+<center>
+  <h2 class = "display-4">Modification d'un stage</h2>
+  <br>
+</center>
+{% endif %}
+
+{{form_start(vueFormulaireStage, {'attr':{'novalidate':'novalidate'}}) }}
+
+<label>Libellé du stage</label>
+{{form_errors(vueFormulaireStage.titre)}}
+{{form_widget(vueFormulaireStage.titre, {'attr':{'placeholder':"Développeur Web, Analyste Programmeur..."}})}}
+<br>
+
+<label>Description du stage</label>
+{{form_errors(vueFormulaireStage.description)}}
+{{form_widget(vueFormulaireStage.description, {'attr':{'placeholder':"Vous aurez pour mission de..."}})}}
+<br>
+
+<br>
+<center>
+  <button type="submit" class="btn btn-dark">Valider !</button>
+</center>
+
+{{form_end(vueFormulaireStage)}}
+
+{% endblock %}
+
+{% block tri %}
+{% endblock %}

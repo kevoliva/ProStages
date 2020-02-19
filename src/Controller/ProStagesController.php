@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use App\Form\EntrepriseType;
+use App\Form\StageType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -48,14 +50,8 @@ class ProStagesController extends AbstractController
     // Création d'une entreprise initialement vierge
     $entreprise = new Entreprise();
 
-    // Création d'un objet formulaire pour saisir une entreprise
-    $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-    -> add('nom')
-    -> add('activite')
-    -> add('adresse')
-    -> add('email')
-    -> add('siteWeb')
-    -> getForm();
+    // Création du formulaire permettant de saisir une ressource
+    $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
     // Récupération des données dans $entreprise si elles ont été soumises
     $formulaireEntreprise -> handleRequest($requeteHttp);
@@ -83,14 +79,8 @@ class ProStagesController extends AbstractController
   public function modifierEntreprise(Request $requeteHttp, ObjectManager $manager, Entreprise $entreprise)
   {
 
-    // Création d'un objet formulaire pour saisir une entreprise
-    $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-    -> add('nom')
-    -> add('activite')
-    -> add('adresse')
-    -> add('email')
-    -> add('siteWeb')
-    -> getForm();
+    // Création du formulaire permettant de modifier l'entreprise
+    $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);
 
     // Récupération des données dans $entreprise si elles ont été soumises
     $formulaireEntreprise -> handleRequest($requeteHttp);
@@ -156,7 +146,7 @@ class ProStagesController extends AbstractController
   }
 
   /**
-  * @Route("/stages/{id}", name="stages_id_prostages")
+  * @Route("/stages/show/{id}", name="stages_id_prostages")
   */
   public function stages_id($id)
   {
@@ -170,4 +160,34 @@ class ProStagesController extends AbstractController
     ['stage' => $stage]);
   }
 
+  /**
+  * @Route("/stages/new", name="ajouter_stage_prostages")
+  */
+  public function ajouterStage(Request $requeteHttp, ObjectManager $manager)
+  {
+    // Création d'un stage initialement vierge
+    $stage = new Stage();
+
+    // Création du formulaire permettant de saisir un stage
+    $formulaireStage = $this->createForm(StageType::class, $stage);
+
+    // Récupération des données dans $stage si elles ont été soumises
+    $formulaireStage -> handleRequest($requeteHttp);
+
+    // Traiter les données du formulaire s'il a été soumis
+    if ($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
+      // Enregistrer les caractéristiques du stage en BD
+      $manager->persist($stage);
+      $manager->flush();
+
+      // Rediriger l'utilisateur vers la page affichant la liste des stages
+      return $this->redirectToRoute('accueil_pro_stages');
+    }
+    // Générer la vue représentant le formulaire
+    $vueFormulaireStage = $formulaireStage -> createView();
+
+    // Afficher la page d'ajout d'un stage
+    return $this -> render('pro_stages/ajoutModifStage.html.twig',
+    ['vueFormulaireStage' => $vueFormulaireStage, 'action' => "ajouter"]);
+  }
 }
