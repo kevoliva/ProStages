@@ -27,6 +27,19 @@
 {{form_widget(vueFormulaireStage.description, {'attr':{'placeholder':"Vous aurez pour mission de..."}})}}
 <br>
 
+<hr>
+<center><h2 class = "display-4">Ajout de l'entreprise concernée</h2></center>
+{{form_errors(vueFormulaireStage.entreprise)}}
+{{form_widget(vueFormulaireStage.entreprise)}}
+<br>
+
+<hr>
+<center><h2 class = "display-4">Stage proposé pour</h2></center>
+<br>
+{{form_errors(vueFormulaireStage.formation)}}
+{{form_widget(vueFormulaireStage.formation)}}
+<br>
+
 <br>
 <center>
   <button type="submit" class="btn btn-dark">Valider !</button>

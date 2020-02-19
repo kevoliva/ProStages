@@ -29,6 +29,13 @@
 
           {% endfor %}
         </td>
+        <td>
+          <center>
+            <a href="{{path('modifier_stage_prostages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
+              <i class = "icon-pencil"></i>
+            </a>
+          </center>
+        </td>
 
       </tr>
       {% endfor %}

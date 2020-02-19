@@ -190,4 +190,33 @@ class ProStagesController extends AbstractController
     return $this -> render('pro_stages/ajoutModifStage.html.twig',
     ['vueFormulaireStage' => $vueFormulaireStage, 'action' => "ajouter"]);
   }
+
+
+/**
+* @Route("/stages/edit/{id}", name="modifier_stage_prostages")
+*/
+public function modifierStage(Request $requeteHttp, ObjectManager $manager, Stage $stage)
+{
+  // Création du formulaire permettant de saisir un stage
+  $formulaireStage = $this->createForm(StageType::class, $stage);
+
+  // Récupération des données dans $stage si elles ont été soumises
+  $formulaireStage -> handleRequest($requeteHttp);
+
+  // Traiter les données du formulaire s'il a été soumis
+  if ($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
+    // Enregistrer les caractéristiques du stage en BD
+    $manager->persist($stage);
+    $manager->flush();
+
+    // Rediriger l'utilisateur vers la page affichant la liste des stages
+    return $this->redirectToRoute('accueil_pro_stages');
+  }
+  // Générer la vue représentant le formulaire
+  $vueFormulaireStage = $formulaireStage -> createView();
+
+  // Afficher la page de modification d'un stage
+  return $this -> render('pro_stages/ajoutModifStage.html.twig',
+  ['vueFormulaireStage' => $vueFormulaireStage, 'action' => "modifier"]);
+}
 }
