@@ -28,9 +28,30 @@
 <br>
 
 <hr>
-<center><h2 class = "display-4">Ajout de l'entreprise concernée</h2></center>
-{{form_errors(vueFormulaireStage.entreprise)}}
-{{form_widget(vueFormulaireStage.entreprise)}}
+<center><h2 class = "display-4">Ajout de l'entreprise concernée</h2></center><br>
+<label>Nom de l'entreprise</label>
+{{form_errors(vueFormulaireStage.entreprise.nom)}}
+{{form_widget(vueFormulaireStage.entreprise.nom, {'attr':{'placeholder':"Total, Safran, Lauak..."}})}}
+<br>
+
+<label>Activité principale</label>
+{{form_errors(vueFormulaireStage.entreprise.activite)}}
+{{form_widget(vueFormulaireStage.entreprise.activite, {'attr':{'placeholder':"Conception Web..."}})}}
+<br>
+
+<label>Adresse</label>
+{{form_errors(vueFormulaireStage.entreprise.adresse)}}
+{{form_widget(vueFormulaireStage.entreprise.adresse, {'attr':{'placeholder':"33 Rue de la Paix 64600 Anglet..."}})}}
+<br>
+
+<label>Mail</label>
+{{form_errors(vueFormulaireStage.entreprise.email)}}
+{{form_widget(vueFormulaireStage.entreprise.email, {'attr':{'placeholder':"contact@safran.com..."}})}}
+<br>
+
+<label>Site Web</label>
+{{form_errors(vueFormulaireStage.entreprise.siteWeb)}}
+{{form_widget(vueFormulaireStage.entreprise.siteWeb, {'attr':{'placeholder':"safran.com..."}})}}
 <br>
 
 <hr>
