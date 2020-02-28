@@ -1,7 +1,11 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: null }
+        in_memory:
+            memory:
+              users:
+                  kevoliva: { password: $2y$10$p0d9oXcSRV40/DEm8xXnM.Bx56K3nKbG4ENL8BN0KPzz/teB6rGam, roles: ROLE_ADMIN }
+                  benjouy: { password: $2y$10$v49m1Vg6vdRGJHWM/QtK0ugpbTYUEqBakURFNlgv9p..tHW932FM., roles: ROLE_USER }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -12,11 +16,17 @@ security:
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
+            http_basic: true
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/entreprises/new, roles: ROLE_ADMIN }
+         - { path: ^/stages/new, roles: [ROLE_ADMIN, ROLE_USER] }
+
+    encoders:
+      Symfony\Component\Security\Core\User\User:
+        algorithm: bcrypt
+        cost:      15
