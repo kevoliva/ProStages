@@ -20,32 +20,35 @@
         {{stageCourant.titre}}</a></td>
 
         <td><a href = "{{path('stages_par_entreprise_prostages', {nom:stageCourant.entreprise.getNom})}}" style="color:white; text-decoration:none;">
-        {{stageCourant.entreprise.getNom}}</a></td>
+          {{stageCourant.entreprise.getNom}}</a></td>
 
-        <td>
-          {% for formationCourante in stageCourant.formation %}
+          <td>
+            {% for formationCourante in stageCourant.formation %}
 
-          {{formationCourante.nomCourt}}
+            {{formationCourante.nomCourt}}
 
-          {% endfor %}
-        </td>
-        <td>
-          <center>
-            <a href="{{path('modifier_stage_prostages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
-              <i class = "icon-pencil"></i>
-            </a>
-          </center>
-        </td>
+            {% endfor %}
+          </td>
+          <td>
+            <center>
+              <a href="{{path('modifier_stage_prostages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
+                <i class = "icon-pencil"></i>
+              </a>
+            </center>
+          </td>
 
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-  <center>
-    <a href="{{ path('ajouter_stage_prostages') }}">
-      <button class = "btn btn-dark btn-outline">Ajouter un stage</button>
-    </a>
-  </center>
+    {# Ajout d'un stage SI l'utilisateur est authentifié #}
+    {% if is_granted('ROLE_USER') %}
+    <center>
+      <a href="{{ path('ajouter_stage_prostages') }}">
+        <button class = "btn btn-dark btn-outline">Ajouter un stage</button>
+      </a>
+    </center>
+    {% endif %}
 
-{% endblock %}
+    {% endblock %}

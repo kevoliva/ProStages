@@ -39,10 +39,14 @@ Entreprises
   </tbody>
 </table>
 
+{# Ajout d'un stage SI administrateur #}
+{% if is_granted('ROLE_ADMIN') %}
 <center>
   <a href="{{ path('ajouter_entreprises_prostages') }}">
     <button class = "btn btn-dark btn-outline">Ajouter une entreprise</button>
   </a>
 </center>
+{% endif %}
+
 
 {% endblock %}
