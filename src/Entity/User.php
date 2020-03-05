@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -19,6 +20,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="Cette valeur doit être renseignée")
+     * @Assert\Email(message = "Cette adresse mail est invalide")
      */
     private $email;
 
@@ -30,16 +33,31 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Cette valeur doit être renseignée")
+     * @Assert\Length(
+     *    min = 4,
+     *    minMessage = "Le mot de passe doit faire minimum 4 caractères"
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Cette valeur doit être renseignée")
+     * @Assert\Length(
+     *    min = 2,
+     *    minMessage = "Le prénom doit faire au moins 2 caractères"
+     * )
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Cette valeur doit être renseignée")
+     * @Assert\Length(
+     *    min = 2,
+     *    minMessage = "Le nom doit faire au moins 2 caractères"
+     * )
      */
     private $nom;
 
@@ -92,12 +110,12 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return (string) $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
@@ -126,7 +144,7 @@ class User implements UserInterface
         return $this->prenom;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setPrenom(?string $prenom): self
     {
         $this->prenom = $prenom;
 
@@ -138,7 +156,7 @@ class User implements UserInterface
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 
