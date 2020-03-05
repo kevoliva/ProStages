@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block contenu %}
+<center><h3 class="display-4">Inscription</h4></center><hr>
+
+{{form_start(vueFormulaireUtilisateur, {'attr':{'novalidate':'novalidate'}}) }}
+
+<label>Prénom</label>
+{{form_errors(vueFormulaireUtilisateur.prenom)}}
+{{form_widget(vueFormulaireUtilisateur.prenom, {'attr':{'placeholder':"Prénom..."}})}}
+<br>
+
+<label>Nom</label>
+{{form_errors(vueFormulaireUtilisateur.nom)}}
+{{form_widget(vueFormulaireUtilisateur.nom, {'attr':{'placeholder':"Nom..."}})}}
+<br>
+
+<label>Adresse mail</label>
+{{form_errors(vueFormulaireUtilisateur.email)}}
+{{form_widget(vueFormulaireUtilisateur.email, {'attr':{'placeholder':"Adresse mail..."}})}}
+<br>
+
+<label>Mot de passe</label>
+{{form_errors(vueFormulaireUtilisateur.password)}}
+{{form_widget(vueFormulaireUtilisateur.password, {'attr':{'placeholder':"Mot de passe..."}})}}
+<br>
+
+<br>
+<center>
+  <button type="submit" class="btn btn-outline-success">S'inscrire !</button>
+</center>
+
+{{form_end(vueFormulaireUtilisateur)}}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+{% block tri %}
+{% endblock %}
