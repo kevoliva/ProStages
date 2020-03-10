@@ -31,6 +31,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/entreprises/new, roles: ROLE_ADMIN }
+         - { path: ^/formation, roles: ROLE_ADMIN}
          - { path: ^/stages/new, roles: [ROLE_ADMIN, ROLE_USER] }
 
     encoders:
