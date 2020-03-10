@@ -1,37 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formation index{% endblock %}
+{% block title %}Formations{% endblock %}
 
-{% block body %}
-    <h1>Formation index</h1>
+{% block contenu %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>NomCourt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for formation in formations %}
-            <tr>
-                <td>{{ formation.id }}</td>
-                <td>{{ formation.nom }}</td>
-                <td>{{ formation.nomCourt }}</td>
-                <td>
-                    <a href="{{ path('formation_show', {'id': formation.id}) }}">show</a>
-                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th>NomCourt</th>
+      <th>Nom</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for formation in formations %}
+    <tr>
+      <td>{{ formation.nomCourt }}</td>
+      <td>{{ formation.nom }}</td>
+      <td>
+        <a href="{{ path('formation_show', {'nom': formation.nom}) }}" style="color:white; text-decoration:none;"><i class = "icon-eye"></i></a>
+        <a href="{{ path('formation_edit', {'id': formation.id}) }}" style="color:white; text-decoration:none;"><i class = "icon-pencil"></i></a>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="4">Aucune formation trouvée</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    <a href="{{ path('formation_new') }}">Create new</a>
+{# Ajout d'une formation SI administrateur #}
+{% if is_granted('ROLE_ADMIN') %}
+<center>
+  <a href="{{ path('formation_new') }}">
+    <button class = "btn btn-dark btn-outline">Ajouter une formation</button>
+  </a>
+</center>
+{% endif %}
 {% endblock %}
