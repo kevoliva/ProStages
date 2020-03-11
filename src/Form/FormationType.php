@@ -6,6 +6,10 @@ use App\Entity\Formation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Stage;
 
 class FormationType extends AbstractType
 {
@@ -14,7 +18,16 @@ class FormationType extends AbstractType
         $builder
             ->add('nom')
             ->add('nomCourt')
-            ->add('stages')
+            // L'ajout de stage ne se fait pas en base de donnée
+            
+/*          ->add('stages', EntityType::class, [
+              'class' => Stage::class,
+              'choice_label' => function(Stage $stages){
+                return $stages->getTitre();
+              },
+              'multiple' => true,
+              'expanded' => true
+            ])*/
         ;
     }
 
